@@ -10,18 +10,13 @@ import {
 } from "../../../utils/file";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-	const prevPath =
-		process.env.NODE_ENV === "development" ? "/public/manga" : "/manga";
-
-	const mangaDirectories = process.cwd() + prevPath;
+	const mangaDirectories = serverPath("public/manga");
 
 	const time = elapsedTime();
 
 	time.before();
 
 	const mangaListNames = getDirectories(mangaDirectories);
-
-	console.log([getDirectories(serverPath("manga"))]);
 
 	const mangaList = getDirectoriesContent(mangaDirectories, mangaListNames);
 
