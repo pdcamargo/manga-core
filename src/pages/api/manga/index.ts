@@ -1,15 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { join } from "path";
 import { elapsedTime } from "../../../utils/date";
 import { getDirectories, getDirectoriesContent } from "../../../utils/file";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const prevPath =
-		process.env.NODE_ENV === "development"
-			? "../../../../public/manga"
-			: "../../manga";
-	const mangaDirectories = join(__dirname, prevPath);
+		process.env.NODE_ENV === "development" ? "/public/manga" : "/manga";
+
+	const mangaDirectories = prevPath;
 
 	const time = elapsedTime();
 
