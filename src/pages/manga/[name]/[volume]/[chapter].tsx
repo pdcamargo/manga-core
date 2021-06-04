@@ -91,10 +91,10 @@ const Home: React.FC<{ data: IManga[] }> = ({ data }) => {
 export default Home;
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
-	const port = process.env.PORT || 3000;
-
-	const url = `http://localhost:${port}`;
-
+	const url =
+		process.env.NODE_ENV === "development"
+			? "http://localhost:3000"
+			: "https://manga-core.vercel.app";
 	const {
 		data: { data },
 	} = await axios(`${url}/api/manga`);
@@ -123,9 +123,10 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-	const port = process.env.PORT || 3000;
-
-	const url = `http://localhost:${port}`;
+	const url =
+		process.env.NODE_ENV === "development"
+			? "http://localhost:3000"
+			: "https://manga-core.vercel.app";
 
 	const {
 		data: { data },
