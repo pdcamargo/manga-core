@@ -90,51 +90,51 @@ const Home: React.FC<{ data: IManga[] }> = ({ data }) => {
 
 export default Home;
 
-export const getStaticPaths: GetStaticPaths = async (context) => {
-	const url =
-		process.env.NODE_ENV === "development"
-			? "http://localhost:3000"
-			: "https://manga-core.vercel.app";
-	const {
-		data: { data },
-	} = await axios(`${url}/api/manga`);
+// export const getStaticPaths: GetStaticPaths = async (context) => {
+// 	const url =
+// 		process.env.NODE_ENV === "development"
+// 			? "http://localhost:3000"
+// 			: "https://manga-core.vercel.app";
+// 	const {
+// 		data: { data },
+// 	} = await axios(`${url}/api/manga`);
 
-	const mangas: IManga[] = data.filter(
-		(manga: IManga) => manga.volumes.length > 0
-	);
+// 	const mangas: IManga[] = data.filter(
+// 		(manga: IManga) => manga.volumes.length > 0
+// 	);
 
-	const paths: any[] = [];
+// 	const paths: any[] = [];
 
-	mangas.forEach((manga) => {
-		manga.volumes.forEach((volume, volumeIdx) => {
-			volume.chapters.forEach(({ chapter }) => {
-				paths.push({
-					params: {
-						name: manga.name,
-						volume: `${volumeIdx + 1}`,
-						chapter,
-					},
-				});
-			});
-		});
-	});
+// 	mangas.forEach((manga) => {
+// 		manga.volumes.forEach((volume, volumeIdx) => {
+// 			volume.chapters.forEach(({ chapter }) => {
+// 				paths.push({
+// 					params: {
+// 						name: manga.name,
+// 						volume: `${volumeIdx + 1}`,
+// 						chapter,
+// 					},
+// 				});
+// 			});
+// 		});
+// 	});
 
-	return { paths, fallback: false };
-};
+// 	return { paths, fallback: false };
+// };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-	const url =
-		process.env.NODE_ENV === "development"
-			? "http://localhost:3000"
-			: "https://manga-core.vercel.app";
+// export const getStaticProps: GetStaticProps = async (context) => {
+// 	const url =
+// 		process.env.NODE_ENV === "development"
+// 			? "http://localhost:3000"
+// 			: "https://manga-core.vercel.app";
 
-	const {
-		data: { data },
-	} = await axios(`${url}/api/manga`);
+// 	const {
+// 		data: { data },
+// 	} = await axios(`${url}/api/manga`);
 
-	return {
-		props: {
-			data,
-		},
-	};
-};
+// 	return {
+// 		props: {
+// 			data,
+// 		},
+// 	};
+// };
