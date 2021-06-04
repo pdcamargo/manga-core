@@ -6,7 +6,9 @@ import MangaReader from "../../../../modules/MangaReader";
 
 import { IManga } from "../../../../types/manga";
 
-const Home: React.FC<{ data: IManga[] }> = ({ data }) => {
+const Home: React.FC<{ data: IManga[] }> = ({ data = [] }) => {
+	return null;
+
 	const { query, replace, prefetch, push } = useRouter();
 
 	const manga = data.find((manga) => manga.name === `${query.name}`);
