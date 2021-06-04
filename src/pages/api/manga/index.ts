@@ -15,7 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 	const mangaListNames = getDirectories(mangaDirectories);
 
-	console.log(mangaListNames);
+	console.log(mangaDirectories, process.cwd(), __dirname);
 
 	const mangaList = getDirectoriesContent(mangaDirectories, mangaListNames);
 
