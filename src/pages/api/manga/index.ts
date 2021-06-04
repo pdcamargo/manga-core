@@ -4,9 +4,13 @@ import { join } from "path";
 import { elapsedTime } from "../../../utils/date";
 import { getDirectories, getDirectoriesContent } from "../../../utils/file";
 
-const mangaDirectories = join(__dirname, "../../../../public/manga");
-
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+	const prevPath =
+		process.env.NODE_ENV === "development"
+			? "../../../../public/manga"
+			: "../../manga";
+	const mangaDirectories = join(__dirname, prevPath);
+
 	const time = elapsedTime();
 
 	time.before();
