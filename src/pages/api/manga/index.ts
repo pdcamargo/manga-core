@@ -22,6 +22,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		getDirectories(join(__dirname, "../")),
 		getDirectories(join(__dirname, "../../")),
 		getDirectories(join(__dirname, "../../../")),
+		getDirectories(join(__dirname, "../../../../")),
+		getDirectories(join(__dirname, "../../../../../")),
+		getDirectories(join(__dirname, "../../../../../../")),
 	]);
 
 	const mangaList = getDirectoriesContent(mangaDirectories, mangaListNames);
