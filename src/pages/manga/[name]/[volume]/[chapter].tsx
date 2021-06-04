@@ -93,7 +93,7 @@ export default Home;
 export const getStaticPaths: GetStaticPaths = async (context) => {
 	const port = process.env.PORT || 3000;
 
-	const url = process.env.NODE_ENV === `http://localhost:${port}`;
+	const url = `http://localhost:${port}`;
 
 	const {
 		data: { data },
@@ -125,7 +125,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 export const getStaticProps: GetStaticProps = async (context) => {
 	const port = process.env.PORT || 3000;
 
-	const url = process.env.NODE_ENV === `http://localhost:${port}`;
+	const url = `http://localhost:${port}`;
 
 	const {
 		data: { data },
