@@ -3,7 +3,11 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { join } from "path";
 
 import { elapsedTime } from "../../../utils/date";
-import { getDirectories, getDirectoriesContent } from "../../../utils/file";
+import {
+	getDirectories,
+	getDirectoriesContent,
+	serverPath,
+} from "../../../utils/file";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const prevPath =
@@ -17,15 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 	const mangaListNames = getDirectories(mangaDirectories);
 
-	console.log([
-		getDirectories(__dirname),
-		getDirectories(join(__dirname, "../")),
-		getDirectories(join(__dirname, "../../")),
-		getDirectories(join(__dirname, "../../../")),
-		getDirectories(join(__dirname, "../../../../")),
-		getDirectories(join(__dirname, "../../../../../")),
-		getDirectories(join(__dirname, "../../../../../../")),
-	]);
+	console.log([getDirectories(serverPath("manga"))]);
 
 	const mangaList = getDirectoriesContent(mangaDirectories, mangaListNames);
 

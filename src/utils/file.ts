@@ -1,4 +1,6 @@
-import { readdirSync, existsSync, readFileSync, Dirent } from "fs";
+import path from "path";
+import { readdirSync, existsSync, readFileSync } from "fs";
+import getConfig from "next/config";
 
 export const getDirectories = (source: string, onlyDir = true): string[] => {
 	if (!existsSync(source)) {
@@ -65,4 +67,11 @@ export const getDirectoriesContent = (source: string, mangaNames: string[]) => {
 			volumes: mangaVolumes,
 		};
 	});
+};
+
+export const serverPath = (staticFilePath: string) => {
+	return path.join(
+		getConfig().serverRuntimeConfig.PROJECT_ROOT,
+		staticFilePath
+	);
 };
