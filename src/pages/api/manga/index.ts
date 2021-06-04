@@ -7,13 +7,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const prevPath =
 		process.env.NODE_ENV === "development" ? "/public/manga" : "/manga";
 
-	const mangaDirectories = prevPath;
+	const mangaDirectories = process.cwd() + prevPath;
 
 	const time = elapsedTime();
 
 	time.before();
 
 	const mangaListNames = getDirectories(mangaDirectories);
+
+	console.log(mangaListNames);
 
 	const mangaList = getDirectoriesContent(mangaDirectories, mangaListNames);
 
